@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_navigation"
+    app:startDestination="@id/countyFragment">
+
+    <fragment
+        android:id="@+id/countyFragment"
+        android:name="pl.ozodbek.allcountriesjsonlist.ui.fragments.CountyFragment"
+        android:label="fragment_county"
+        tools:layout="@layout/fragment_county" >
+        <action
+            android:id="@+id/action_countyFragment_to_citiesFragment"
+            app:destination="@id/citiesFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/citiesFragment"
+        android:name="pl.ozodbek.allcountriesjsonlist.ui.fragments.CitiesFragment"
+        android:label="fragment_cities"
+        tools:layout="@layout/fragment_cities" >
+        <action
+            android:id="@+id/action_citiesFragment_to_countyFragment"
+            app:destination="@id/countyFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out" />
+        <action
+            android:id="@+id/action_citiesFragment_to_resultaFragment"
+            app:destination="@id/resultaFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"
+            app:popUpTo="@id/resultaFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="countyData"
+            app:argType="pl.ozodbek.allcountriesjsonlist.data.Country" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultaFragment"
+        android:name="pl.ozodbek.allcountriesjsonlist.ui.fragments.ResultaFragment"
+        android:label="fragment_resulta"
+        tools:layout="@layout/fragment_resulta" >
+        <argument
+            android:name="countyName"
+            app:argType="string" />
+        <argument
+            android:name="city_name"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_resultaFragment_to_countyFragment"
+            app:destination="@id/countyFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out" />
+    </fragment>
+</navigation>
