@@ -35,7 +35,7 @@
             app:exitAnim="@anim/fade_out"
             app:popEnterAnim="@anim/fade_in"
             app:popExitAnim="@anim/fade_out"
-            app:popUpTo="@id/resultaFragment"
+            app:popUpTo="@id/citiesFragment"
             app:popUpToInclusive="true" />
         <argument
             android:name="countyData"
@@ -43,9 +43,9 @@
     </fragment>
     <fragment
         android:id="@+id/resultaFragment"
-        android:name="pl.ozodbek.allcountriesjsonlist.ui.fragments.ResultaFragment"
+        android:name="pl.ozodbek.allcountriesjsonlist.ui.fragments.ResultsFragment"
         android:label="fragment_resulta"
-        tools:layout="@layout/fragment_resulta" >
+        tools:layout="@layout/fragment_results" >
         <argument
             android:name="countyName"
             app:argType="string" />
@@ -56,6 +56,9 @@
             android:id="@+id/action_resultaFragment_to_countyFragment"
             app:destination="@id/countyFragment"
             app:enterAnim="@anim/fade_in"
-            app:exitAnim="@anim/fade_out" />
+            app:exitAnim="@anim/fade_out"
+            app:popExitAnim="@anim/fade_out"
+            app:popUpTo="@id/countyFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

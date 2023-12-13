@@ -1,16 +1,16 @@
 package pl.ozodbek.allcountriesjsonlist.ui.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.View
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import pl.ozodbek.adapters.CityAdapter
+import pl.ozodbek.allcountriesjsonlist.adapters.CityAdapter
 import pl.ozodbek.allcountriesjsonlist.R
 import pl.ozodbek.allcountriesjsonlist.databinding.FragmentCitiesBinding
 import pl.ozodbek.allcountriesjsonlist.util.onBackPressed
-import pl.ozodbek.allcountriesjsonlist.util.setupActionBarWith
 import pl.ozodbek.allcountriesjsonlist.util.oneliner_viewbinding.viewBinding
+import pl.ozodbek.allcountriesjsonlist.util.setupActionBarWith
 
 class CitiesFragment : Fragment(R.layout.fragment_cities) {
 
@@ -29,18 +29,19 @@ class CitiesFragment : Fragment(R.layout.fragment_cities) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupActionBarWith(binding.toolbar, safeArgs.countyData.countryName) {
+        setupActionBarWith(binding.toolbar, safeArgs.countyData.countryName + " regions") {
             navController.popBackStack()
         }
 
         binding.recyclerView.adapter = districtsAdapter
         districtsAdapter.submitList(safeArgs.countyData.states)
         districtsAdapter.setItemClickListener { district ->
-            CitiesFragmentDirections.actionCitiesFragmentToResultaFragment(
-                countyName = safeArgs.countyData.countryName,
-                cityName = district.stateName
+            navController.navigate(
+                CitiesFragmentDirections.actionCitiesFragmentToResultaFragment(
+                    countyName = safeArgs.countyData.countryName,
+                    cityName = district.stateName
+                )
             )
         }
-
     }
 }

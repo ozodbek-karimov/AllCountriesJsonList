@@ -10,5 +10,6 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class City(
     @SerialName("Cities") val cities: List<String>,
-    @SerialName("StateName") val stateName: String
+    @SerialName("StateName") val stateName: String,
+    var isSelected: Boolean = false
 ): Parcelable

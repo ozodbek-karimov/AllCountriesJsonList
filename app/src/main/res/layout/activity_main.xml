@@ -7,6 +7,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:defaultNavHost="true"
-    android:background="@color/custom"
+    android:background="@color/black"
     app:navGraph="@navigation/my_navigation"
     tools:context=".ui.MainActivity"/>

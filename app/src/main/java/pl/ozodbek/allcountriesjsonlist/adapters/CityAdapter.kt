@@ -1,4 +1,4 @@
-package pl.ozodbek.adapters
+package pl.ozodbek.allcountriesjsonlist.adapters
 
 import android.annotation.SuppressLint
 import android.view.ViewGroup

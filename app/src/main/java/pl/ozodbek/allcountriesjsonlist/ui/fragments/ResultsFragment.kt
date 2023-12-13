@@ -6,15 +6,16 @@ import android.view.View
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import pl.ozodbek.allcountriesjsonlist.R
-import pl.ozodbek.allcountriesjsonlist.databinding.FragmentResultaBinding
+import pl.ozodbek.allcountriesjsonlist.databinding.FragmentResultsBinding
 import pl.ozodbek.allcountriesjsonlist.util.onBackPressed
+import pl.ozodbek.allcountriesjsonlist.util.onClick
 import pl.ozodbek.allcountriesjsonlist.util.setupActionBarWith
 import pl.ozodbek.allcountriesjsonlist.util.oneliner_viewbinding.viewBinding
 
-class ResultaFragment : Fragment(R.layout.fragment_resulta) {
+class ResultsFragment : Fragment(R.layout.fragment_results) {
 
-    private val binding by viewBinding(FragmentResultaBinding::bind)
-    private val safeArgs:ResultaFragmentArgs by navArgs()
+    private val binding by viewBinding(FragmentResultsBinding::bind)
+    private val safeArgs:ResultsFragmentArgs by navArgs()
     private val navController by lazy { findNavController() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,8 +28,19 @@ class ResultaFragment : Fragment(R.layout.fragment_resulta) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupActionBarWith(binding.toolbar, getString(R.string.counties)){}
+        setupActionBarWith(binding.toolbar, getString(R.string.counties)){
+            navController.popBackStack()
+        }
 
+
+        binding.countyTv.text = safeArgs.countyName
+        binding.cityTv.text = safeArgs.cityName
+
+        binding.materialButton2.onClick {
+           navController.navigate(ResultsFragmentDirections.actionResultaFragmentToCountyFragment())
+            binding.countyTv.text = safeArgs.countyName
+            binding.cityTv.text = safeArgs.cityName
+        }
 
     }
 }

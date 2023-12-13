@@ -1,4 +1,4 @@
-package pl.ozodbek.adapters
+package pl.ozodbek.allcountriesjsonlist.adapters
 
 import android.annotation.SuppressLint
 import android.view.ViewGroup
@@ -36,6 +36,7 @@ class CountyAdapter :
             remoteData: Country,
             clickListener: ((Country) -> Unit)?,
         ) {
+
             binding.title.text = remoteData.countryName
             binding.root.setOnClickListener { clickListener?.invoke(remoteData) }
         }
